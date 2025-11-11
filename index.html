@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EncantaKits — Criatividade que facilita sua rotina</title>
+  <meta name="description" content="Arquivos digitais prontos para imprimir e personalizar — para mães, professoras e artistas que querem praticidade com charme." />
+  <style>
+    /* Paleta */
+    :root{
+      --yellow: #FEEAA0;
+      --pink: #F8C8DC;
+      --blue: #A6D8F3;
+      --lilac: #CFC4FF;
+      --white: #FFFFFF;
+      --soft-gray: #F4F4F6;
+      --text: #2b2b2b;
+      --muted: #6b6b6b;
+      --accent: #F8C8DC;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(38,38,38,0.06);
+    }
+
+    /* Reset */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; color:var(--text);background:linear-gradient(180deg,var(--white),var(--soft-gray));}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Layout */
+    .container{max-width:1120px;margin:0 auto;padding:28px}
+    header{background:transparent;padding:18px 0;position:sticky;top:0;backdrop-filter: blur(6px);z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--pink),var(--yellow));box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--text)}
+    nav ul{display:flex;gap:18px;align-items:center;list-style:none;margin:0;padding:0}
+    .nav a.btn{background:var(--blue);padding:10px 14px;border-radius:12px;font-weight:600;color:var(--text);box-shadow:var(--shadow)}
+    .mobile-toggle{display:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
+    .hero-card{background:linear-gradient(180deg,var(--white),#fff);border-radius:22px;padding:28px;box-shadow:var(--shadow);}
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--yellow);font-weight:600;margin-bottom:12px}
+    h1{font-size:34px;margin:8px 0 12px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn-primary{background:linear-gradient(90deg,var(--pink),var(--lilac));padding:12px 18px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
+    .btn-ghost{background:transparent;padding:10px 14px;border-radius:12px;border:2px solid rgba(0,0,0,0.06);cursor:pointer}
+
+    /* Right card */
+    .preview-card{padding:18px;background:linear-gradient(180deg,var(--blue),var(--white));border-radius:16px}
+    .preview-list{display:grid;gap:12px}
+    .mini{background:#fff;border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px;box-shadow:0 6px 18px rgba(16,16,16,0.04)}
+    .swatch{width:44px;height:44px;border-radius:8px;flex:0 0 44px}
+
+    /* Sections */
+    .section{padding:28px 0}
+    .section h2{margin:0 0 8px}
+    .subtitle{color:var(--muted);margin-bottom:14px}
+
+    /* Categories */
+    .cats{display:flex;gap:12px;flex-wrap:wrap}
+    .cat{background:var(--white);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow);min-width:180px}
+
+    /* Products grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--white);border-radius:16px;padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+    .price{font-weight:700}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{background:var(--soft-gray);padding:6px 8px;border-radius:999px;font-size:13px}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .t{background:linear-gradient(180deg,var(--white),#fff);padding:16px;border-radius:14px;box-shadow:var(--shadow)}
+    .avatar{width:48px;height:48px;border-radius:999px;overflow:hidden;flex-shrink:0}
+    .t-head{display:flex;gap:12px;align-items:center}
+
+    /* Benefits */
+    .benefits{display:flex;gap:12px;flex-wrap:wrap}
+    .benefit{background:linear-gradient(180deg,var(--white),#fff);padding:14px;border-radius:12px;flex:1;min-width:160px;box-shadow:var(--shadow)}
+
+    /* Footer */
+    footer{padding:26px 0;border-top:1px solid rgba(0,0,0,0.04);margin-top:20px}
+    .footer-grid{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+
+    /* Small screens */
+    @media(max-width:920px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .testimonials{grid-template-columns:1fr}
+      nav ul{display:none}
+      .mobile-toggle{display:block}
+    }
+    @media(max-width:560px){
+      .grid{grid-template-columns:1fr}
+      .brand span{display:none}
+    }
+
+    /* Micro interactions */
+    .btn{transition:transform .12s ease, box-shadow .12s ease}
+    .btn:active{transform:translateY(1px)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">EK</div>
+        <div>
+          <div style="font-weight:700">EncantaKits</div>
+          <div style="font-size:12px;color:var(--muted)">Criatividade que facilita sua rotina</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="mobile-toggle" id="mobileBtn">☰</button>
+        <ul id="menu">
+          <li><a href="#">Página Inicial</a></li>
+          <li><a href="#prod">Produtos</a></li>
+          <li><a href="#kits">Kits Completos</a></li>
+          <li><a href="#plan">Planejadores</a></li>
+          <li><a href="#subl">Artes para Sublimação</a></li>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a class="btn" id="cartBtn">Carrinho (0)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <span class="kicker">Arquivos Digitais</span>
+        <h1>EncantaKits – Criatividade que facilita sua rotina</h1>
+        <p class="lead">Arquivos digitais prontos para imprimir e personalizar, criados para mães, professoras e artistas que querem praticidade com charme.</p>
+        <p style="margin-bottom:18px;color:var(--muted)">“Transforme suas ideias em projetos lindos com nossos arquivos digitais. Baixe, personalize e use em minutos.”</p>
+        <div class="cta-row">
+          <button class="btn-primary btn" onclick="scrollToSection('prod')">Baixar Favoritos</button>
+          <button class="btn-ghost btn" onclick="location.href='#contato'">Fale com a gente</button>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+          <div style="display:flex;align-items:center;gap:8px;background:var(--soft-gray);padding:8px 10px;border-radius:12px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v6" stroke="#000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 10h16" stroke="#000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14v6" stroke="#000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div style="font-size:14px"><strong>Download imediato</strong><div style="font-size:12px;color:var(--muted)">Arquivos prontos para usar</div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="preview-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <strong>Favoritos da Semana</strong>
+          <small style="color:var(--muted)">Atualizado</small>
+        </div>
+        <div class="preview-list">
+          <div class="mini">
+            <div class="swatch" style="background:linear-gradient(135deg,var(--pink),var(--yellow))"></div>
+            <div>
+              <div style="font-weight:700">Planejador Semanal Candy</div>
+              <div style="font-size:13px;color:var(--muted)">Planeje sua semana com charme</div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="swatch" style="background:linear-gradient(135deg,var(--blue),var(--lilac))"></div>
+            <div>
+              <div style="font-weight:700">Etiquetas Escolares Encantadas</div>
+              <div style="font-size:13px;color:var(--muted)">Identifique com fofura</div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="swatch" style="background:linear-gradient(135deg,var(--yellow),var(--blue))"></div>
+            <div>
+              <div style="font-weight:700">Artes Sublimação – Maternidade</div>
+              <div style="font-size:13px;color:var(--muted)">Toques delicados para lembrancinhas</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Categories quick -->
+    <section class="section">
+      <h2>Categorias mais procuradas</h2>
+      <p class="subtitle">Encontre rapidamente o que você procura</p>
+      <div class="cats">
+        <div class="cat">📁 Planejadores</div>
+        <div class="cat">🎨 Artes para Sublimação</div>
+        <div class="cat">🧾 Etiquetas & Tags</div>
+        <div class="cat">🎁 Kits Completos</div>
+        <div class="cat">📅 Calendários</div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="prod" class="section">
+      <h2>Favoritos da Semana</h2>
+      <p class="subtitle">Arquivos mais amados pela nossa comunidade.</p>
+
+      <div class="grid">
+        <article class="card">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='380'><rect width='100%' height='100%' fill='%23F8C8DC' rx='18'/><text x='24' y='52' font-size='30' fill='%232b2b2b' font-family='Arial'>Planejador Semanal Candy</text></svg>" alt="Planejador Semanal Candy" />
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Planejador Semanal Candy</div>
+              <div style="font-size:13px;color:var(--muted)">Arquivo digital A4 editável</div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">R$ 12,00</div>
+              <div style="font-size:12px;color:var(--muted)">Download imediato</div>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Canva</span><span class="tag">Impressão</span></div>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <button class="btn-primary btn" onclick="addToCart('Planejador Semanal Candy',12)">Adicionar ao carrinho</button>
+            <button class="btn-ghost btn" onclick="openPreview('Planejador Semanal Candy')">Visualizar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='380'><rect width='100%' height='100%' fill='%23A6D8F3' rx='18'/><text x='24' y='52' font-size='30' fill='%232b2b2b' font-family='Arial'>Etiquetas Escolares</text></svg>" alt="Etiquetas Escolares" />
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Etiquetas Escolares Encantadas</div>
+              <div style="font-size:13px;color:var(--muted)">Vários tamanhos</div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">R$ 9,00</div>
+              <div style="font-size:12px;color:var(--muted)">Pronto para imprimir</div>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Impressão</span><span class="tag">Recorte</span></div>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <button class="btn-primary btn" onclick="addToCart('Etiquetas Escolares Encantadas',9)">Adicionar ao carrinho</button>
+            <button class="btn-ghost btn" onclick="openPreview('Etiquetas Escolares Encantadas')">Visualizar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='380'><rect width='100%' height='100%' fill='%23CFC4FF' rx='18'/><text x='24' y='52' font-size='30' fill='%232b2b2b' font-family='Arial'>Kit Infantil Arco-Íris</text></svg>" alt="Kit Infantil" />
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Kit Infantil Arco-Íris</div>
+              <div style="font-size:13px;color:var(--muted)">Convites, tags e lembrancinhas</div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">R$ 22,00</div>
+              <div style="font-size:12px;color:var(--muted)">Kits com descontos</div>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Canva</span><span class="tag">Sublimação</span></div>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <button class="btn-primary btn" onclick="addToCart('Kit Infantil Arco-Íris',22)">Adicionar ao carrinho</button>
+            <button class="btn-ghost btn" onclick="openPreview('Kit Infantil Arco-Íris')">Visualizar</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+      <h2>Quem usa, ama</h2>
+      <p class="subtitle">Depoimentos reais da nossa comunidade</p>
+      <div class="testimonials">
+        <figure class="t">
+          <div class="t-head">
+            <div class="avatar"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'><rect width='100%' height='100%' fill='%23FEEAA0' rx='48'/><text x='20' y='60' font-size='30' fill='%232b2b2b'>A</text></svg>" alt="Ana"/></div>
+            <div>
+              <strong>Ana, professora</strong>
+              <div style="font-size:13px;color:var(--muted)">"Facilitou minha rotina na escola. Tudo prático e lindo."</div>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="t">
+          <div class="t-head">
+            <div class="avatar"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'><rect width='100%' height='100%' fill='%23CFC4FF' rx='48'/><text x='20' y='60' font-size='30' fill='%232b2b2b'>L</text></svg>" alt="Larissa"/></div>
+            <div>
+              <strong>Larissa, artesã</strong>
+              <div style="font-size:13px;color:var(--muted)">"Uso nos personalizados da minha loja. Vende muito!"</div>
+            </div>
+          </div>
+        </figure>
+
+        <figure class="t">
+          <div class="t-head">
+            <div class="avatar"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'><rect width='100%' height='100%' fill='%23A6D8F3' rx='48'/><text x='20' y='60' font-size='30' fill='%232b2b2b'>M</text></svg>" alt="Mariana"/></div>
+            <div>
+              <strong>Mariana, mãe</strong>
+              <div style="font-size:13px;color:var(--muted)">"Organizei as atividades da semana sem stress."</div>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,var(--pink),var(--yellow));padding:18px;border-radius:14px;box-shadow:var(--shadow)">
+      <div>
+        <h3 style="margin:0">Baixe agora seus arquivos favoritos</h3>
+        <p style="margin:6px 0 0;color:var(--muted)">Segurança, rapidez e suporte humanizado.</p>
+      </div>
+      <div>
+        <button class="btn-primary btn" onclick="scrollToSection('prod')">Quero baixar</button>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section">
+      <h2>Vantagens</h2>
+      <p class="subtitle">Por que comprar com a gente</p>
+      <div class="benefits">
+        <div class="benefit">
+          <strong>Download imediato</strong>
+          <div style="font-size:13px;color:var(--muted)">Receba seus arquivos assim que o pagamento for confirmado.</div>
+        </div>
+        <div class="benefit">
+          <strong>Artes exclusivas</strong>
+          <div style="font-size:13px;color:var(--muted)">Designs pensados para encantar e vender.</div>
+        </div>
+        <div class="benefit">
+          <strong>Compatível com Canva</strong>
+          <div style="font-size:13px;color:var(--muted)">Fácil edição e personalização.</div>
+        </div>
+        <div class="benefit">
+          <strong>Suporte via WhatsApp</strong>
+          <div style="font-size:13px;color:var(--muted)">Atendimento rápido e humano.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="sobre" class="section">
+      <h2>Sobre Nós</h2>
+      <p class="subtitle">A EncantaKits nasceu do amor por organização, criatividade e praticidade. Criamos arquivos digitais que ajudam mães, professoras e apaixonados por papelaria a economizar tempo sem perder o encanto. Cada produto é feito com cuidado, cores delicadas e um toque premium que deixa qualquer projeto mais especial. Nosso compromisso é trazer soluções práticas, criativas e acessíveis, entregues sempre com carinho e atenção aos detalhes.</p>
+    </section>
+
+    <!-- Blog preview -->
+    <section id="blog" class="section">
+      <h2>Do Blog</h2>
+      <p class="subtitle">Dicas práticas e inspirações</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <article style="background:var(--white);padding:12px;border-radius:12px;box-shadow:var(--shadow);min-width:220px;flex:1">
+          <strong>5 ideias rápidas para personalizar lembrancinhas</strong>
+          <div style="font-size:13px;color:var(--muted);margin-top:8px">Dicas para economizar tempo e produzir com estilo.</div>
+        </article>
+        <article style="background:var(--white);padding:12px;border-radius:12px;box-shadow:var(--shadow);min-width:220px;flex:1">
+          <strong>Como usar o planner semanal para organizar a casa</strong>
+          <div style="font-size:13px;color:var(--muted);margin-top:8px">Rotinas simples para dias mais tranquilos.</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato" class="section">
+      <h2>Contato</h2>
+      <p class="subtitle">Estamos aqui para ajudar — fale conosco!</p>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <a href="https://wa.me/5531971055579" target="_blank" class="cat">💬 WhatsApp: 31 97105-5579</a>
+        <a href="mailto:contato@encantakits.com.br" class="cat">✉️ contato@encantakits.com.br</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div style="font-weight:700">EncantaKits</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:8px">Arquivos digitais prontos para imprimir e personalizar.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+        <div style="font-size:13px;color:var(--muted)">WhatsApp: 31 97105-5579</div>
+        <div style="font-size:13px;color:var(--muted)">E-mail: contato@encantakits.com.br</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile toggle
+    const mobileBtn = document.getElementById('mobileBtn');
+    const menu = document.getElementById('menu');
+    mobileBtn?.addEventListener('click',()=>{
+      if(menu.style.display==='flex') menu.style.display='none';
+      else menu.style.display='flex';
+    });
+
+    // Simple cart state
+    let cartCount = 0;
+    const cartBtn = document.getElementById('cartBtn');
+    function addToCart(name,price){
+      cartCount += 1;
+      cartBtn.innerText = `Carrinho (${cartCount})`;
+      // micro interaction: toast
+      showToast(`${name} adicionado ao carrinho`);
+    }
+    function openPreview(name){
+      showToast(`Visualizando: ${name}`);
+    }
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // Toast helper
+    function showToast(text){
+      const t = document.createElement('div');
+      t.innerText = text;
+      t.style.position='fixed';t.style.right='20px';t.style.bottom='20px';t.style.padding='12px 16px';t.style.background='linear-gradient(90deg,var(--pink),var(--yellow))';t.style.borderRadius='12px';t.style.boxShadow='var(--shadow)';t.style.zIndex=9999;
+      document.body.appendChild(t);
+      setTimeout(()=>{t.style.opacity='0';t.style.transform='translateY(8px)';},2000);
+      setTimeout(()=>t.remove(),2600);
+    }
+  </script>
+</body>
+</html>
